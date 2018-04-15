@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+What's Your Number?
+"A quick way to figure out the correct macronutrients you need to achieve your fitness goals."
 
-Things you may want to cover:
 
-* Ruby version
+This is a fitness app built mostly with Angularjs, which allows
+you to figure out your macronutrient ratio and numbers that you
+need to be getting every day to achieve your fitness goal.
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+I am a Certified Personal Trainer and I used formulas such as the
+Harris-Benedict Metabolic Rate equation to help figure out the
+numbers. Nonetheless, this app is still in development so please know it is subject to bugs! If the numbers you are seeing don't make sense, especially if you have crunched numbers more than once per page reload, please reload the page to reset to normal behavior. Improvements are in progress.
