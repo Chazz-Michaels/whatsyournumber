@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>What's Your Number??</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+  </head>
+
+  <body ng-app="homePage" id="dadBody">
+    <div class="row" ng-controller="mainController">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10 container1">
+        <div><h1>{{header}}</h1></div>
+        <div>{{description}}</div>
+
+        <div class="mainWrapper">
+          <div>
+            Your current weight (lbs):
+            <input type="number" ng-model="weight" class="inputBox">
+          </div>
+          <div>
+            Your age:
+            <input type="number" ng-model="age" class="inputBox">
+          </div>
+          <div>
+            Your height:
+            <input type="number" ng-model="feet" class="inputBox">feet
+            <input type="number" ng-model="inches" class="inputBox">inches
+          </div>
+          <div>
+            Your gender:
+            <select ng-model="gender" class="inputBox">Select
+              <option ng-value="selectMale">Male
+              <option ng-value="selectFemale">Female
+            </select>
+          </div>
+
+<!-- ################################################### -->
+          <div id="displayGoalNormal" style="display:block">
+            Your fitness goal:
+            <select ng-model="goal" class="inputBox testytesty">
+                <option ng-value="val1">Cut Fast
+                <option ng-value="val2">Cut Normal
+                <option ng-value="val3">Cut Slow
+                <option ng-value="val4">Maintain
+                <option ng-value="val5">Bulk Slow
+                <option ng-value="val6">Bulk Normal
+                <option ng-value="val7">Bulk Fast
+            </select>
+          </div>
+          <div id="advanced">
+            <div id="advancedBox" class="btn toggleButton" ng-model="goal" ng-click="toAdvanced()"></div>
+            <span id="advancedText" class="advanced">Advanced</span>
+          </div>
+<!-- ################################################### -->
+          <div id="displayGoalAdvanced" style="display:none">
+            Your calorie aim:
+            <select ng-model="goal" class="inputBox testytesty">
+                <option ng-value="val1">Calorie Deficit
+                <option ng-value="val2">Maintain
+                <option ng-value="val3">Calorie Surplus
+            </select>
+            adjusted by
+            <input type="number" ng-model="adjCalories" class="inputBox">calories
+            <br>
+            <hr>
+            Your macro ratio:<br>
+            Protein(%):
+            <select ng-model="desiredProtein" class="inputBox">
+                <option ng-value="val0">0
+                <option ng-value="val1">10
+                <option ng-value="val2">20
+                <option ng-value="val3">30
+                <option ng-value="val4">40
+                <option ng-value="val5">50
+                <option ng-value="val6">60
+                <option ng-value="val7">70
+                <option ng-value="val8">80
+                <option ng-value="val9">90
+                <option ng-value="val10">100
+            </select>
+            Carbs(%):
+            <select ng-model="desiredCarbs" class="inputBox">
+                <option ng-value="val0">0
+                <option ng-value="val1">10
+                <option ng-value="val2">20
+                <option ng-value="val3">30
+                <option ng-value="val4">40
+                <option ng-value="val5">50
+                <option ng-value="val6">60
+                <option ng-value="val7">70
+                <option ng-value="val8">80
+                <option ng-value="val9">90
+                <option ng-value="val10">100
+            </select>
+            Fats(%):
+            <select ng-model="desiredFats" class="inputBox">
+                <option ng-value="val0">0
+                <option ng-value="val1">10
+                <option ng-value="val2">20
+                <option ng-value="val3">30
+                <option ng-value="val4">40
+                <option ng-value="val5">50
+                <option ng-value="val6">60
+                <option ng-value="val7">70
+                <option ng-value="val8">80
+                <option ng-value="val9">90
+                <option ng-value="val10">100
+            </select>
+            <br>
+
+            <br>
+            <div class="btn toggleButton" ng-model="goal" ng-click="toNormal()"></div>
+            <span class="advanced">Back to Recommended</span>
+          </div>
+          <hr>
+<!-- ################################################### -->
+          <div class="btn myButton" ng-click="doTheMath()">
+            <h1>Crunch</h1>
+          </div>
+          <br>
+        </div>
+<!-- ################################################### -->
+        <div class="mainWrapper">
+          <div>
+            <h2>Your basal metabolic rate:</h2><br>{{yourBMR}}
+          </div>
+          <div>
+            <h2>Your goal calories per day:</h2><br>{{goalCalories}}
+          </div>
+          <div class="miniBox">
+            <h2>Your macro ratio:</h2><br>
+            Protein: {{percentProtein}}%<br>
+            Carbs: {{percentCarbs}}%<br>
+            Fats: {{percentFats}}%
+          </div>
+          <div class="miniBox">
+            <h2>Your daily breakdown:</h2><br>
+            Your protein: {{dailyProtein}}g<br>
+            Your carbs: {{dailyCarbs}}g<br>
+            Your fats: {{dailyFats}}g<br>
+          </div>
+        </div>
+<!-- ################################################### -->
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
+
+
+
+
+  </body>
+  </html>
