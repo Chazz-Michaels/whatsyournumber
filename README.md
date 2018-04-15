@@ -4,6 +4,9 @@ What's Your Number?
 "A quick way to figure out the correct macronutrients you need to achieve your fitness goals."
 
 
+Try it: yournumber.herokuapp.com
+
+
 This is a fitness app built mostly with Angularjs, which allows
 you to figure out your macronutrient ratio and numbers that you
 need to be getting every day to achieve your fitness goal.
